@@ -1,0 +1,7 @@
+requests
+
+
+'''
+在项目目录，运行以下命令安装依赖
+pip install -r requirements.txt
+'''
