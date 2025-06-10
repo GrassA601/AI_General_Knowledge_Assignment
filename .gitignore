@@ -1,0 +1,11 @@
+# 忽略敏感配置
+config.py
+utils/config.py
+.env
+
+# 忽略数据库文件
+*.db
+
+# 忽略 Python 缓存
+__pycache__/
+*.pyc

@@ -1,11 +1,18 @@
-import json
-import io
 import sys
+import io
+import json
+from dotenv import load_dotenv
+
+# 设置标准输出为 utf-8，适配中文输出
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+# 加载环境变量（如 API KEY）
+load_dotenv()
+
+# 导入项目模块
 from db import init_db, add_task, list_tasks
 from agent import query_deepseek
 
-# 设置输出编码，防止中文乱码（Windows下必要）
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def display_tasks():
     tasks = list_tasks()
