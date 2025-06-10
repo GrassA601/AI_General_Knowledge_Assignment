@@ -10,7 +10,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 load_dotenv()
 
 # 导入项目模块
-from db import init_db, add_task, list_tasks
+from db import init_db, add_task, list_tasks, delete_tasks_by_ids_with_confirmation, reset_task_ids
 from agent import query_deepseek
 
 
@@ -51,6 +51,11 @@ def main():
                     print("⚠️ 未识别任务内容，请重新输入")
             elif intent == "show":
                 display_tasks()
+            elif intent == "delete":
+                ids = task_info.get("ids", [])
+                delete_tasks_by_ids_with_confirmation(ids)
+                if ids:
+                    reset_task_ids()
             elif intent == "exit":
                 print("👋 感谢使用，再见！")
                 break
